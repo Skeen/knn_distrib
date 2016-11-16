@@ -1,0 +1,8 @@
+[submodule "compute"]
+	path = compute
+	url = git@github.com:Skeen/knn_distrib_compute.git
+	branch = master
+[submodule "server"]
+	path = server
+	url = git@github.com:Skeen/knn_distrib_server.git
+	branch = master
