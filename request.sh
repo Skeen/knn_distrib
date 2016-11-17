@@ -3,12 +3,24 @@
 #echo Reference: $1
 #echo Query: $2
 
-SERVER_URL=http://skeen.website:3004
+SERVER_URL=http://localhost:3001
+
+TIMEOUT=10000
+SPLIT=1000
+KNN=1
+
+REF_PATH=$1
+QUERY_PATH=$2
+
+NAME=$(curl -q \
+  -F "timeout=$TIMEOUT" \
+  -F "split=$SPLIT" \
+  -F "knn=$KNN" \
+  -F "query=@$QUERY_PATH" \
+  -F "reference=@$REF_PATH" \
+  $SERVER_URL/knn)
+
+#echo "Job has name: $NAME"
 
 curl -q \
-  -F "timeout=10000" \
-  -F "split=1" \
-  -F "knn=1" \
-  -F "query=@$2" \
-  -F "reference=@$1" \
-  $SERVER_URL/knn
+  $SERVER_URL/awaitComplete?name=$NAME
