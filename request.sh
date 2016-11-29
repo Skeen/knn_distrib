@@ -9,11 +9,12 @@ REF_PATH=$1
 QUERY_PATH=$2
 
 # Debug info
-echo "Server: $SERVER_URL" >&2
-echo "Timeout: $TIMEOUT" >&2
-echo "Split: $SPLIT" >&2
-echo "Reference: $REF_PATH" >&2
-echo "Query: $QUERY_PATH" >&2
+echo "Configuration:" >&2
+echo -e "\tServer: $SERVER_URL" >&2
+echo -e "\tTimeout: $TIMEOUT" >&2
+echo -e "\tSplit: $SPLIT" >&2
+echo -e "\tReference: $REF_PATH" >&2
+echo -e "\tQuery: $QUERY_PATH" >&2
 echo "" >&2
 
 # Upload task
@@ -29,7 +30,8 @@ NAME=$(curl -q \
 
 # Print jobname
 echo "" >&2
-echo "Task submitted: Job has name: $NAME" >&2
+echo "Task submitted:" >&2
+echo -e "\tJob has name: $NAME" >&2
 echo "" >&2
 
 # Print out progress information
