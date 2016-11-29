@@ -7,6 +7,7 @@ SPLIT=1
 
 REF_PATH=$1
 QUERY_PATH=$2
+DTW_ARGS=$3
 
 # Debug info
 echo "Configuration:" >&2
@@ -15,6 +16,7 @@ echo -e "\tTimeout: $TIMEOUT" >&2
 echo -e "\tSplit: $SPLIT" >&2
 echo -e "\tReference: $REF_PATH" >&2
 echo -e "\tQuery: $QUERY_PATH" >&2
+echo -e "\tDTW-Args: $DTW_ARGS" >&2
 echo "" >&2
 
 # Upload task
@@ -26,6 +28,7 @@ NAME=$(curl -q \
   -F "split=$SPLIT" \
   -F "query=@$QUERY_PATH" \
   -F "reference=@$REF_PATH" \
+  -F "dtw_args=$DTW_ARGS" \
   $SERVER_URL/knn)
 
 # Print jobname
