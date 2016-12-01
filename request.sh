@@ -2,12 +2,23 @@
 
 SERVER_URL=http://localhost:3001
 
-TIMEOUT=100000
-SPLIT=1
-
 REF_PATH=$1
 QUERY_PATH=$2
 DTW_ARGS=$3
+SPLIT=$4
+TIMEOUT=$5
+
+# Ensure that split is set
+if [ -z "$SPLIT" ]; then
+    SPLIT=1
+    echo "No split set, using '$SPLIT'" >&2
+fi
+
+# Ensure that timeout is set
+if [ -z "$TIMEOUT" ]; then
+    TIMEOUT=100000
+    echo "No timeout set, using '$TIMEOUT'" >&2
+fi
 
 # Debug info
 echo "Configuration:" >&2
@@ -17,6 +28,8 @@ echo -e "\tSplit: $SPLIT" >&2
 echo -e "\tReference: $REF_PATH" >&2
 echo -e "\tQuery: $QUERY_PATH" >&2
 echo -e "\tDTW-Args: $DTW_ARGS" >&2
+echo -e "\tQuery Split: $SPLIT" >&2
+echo -e "\tTimeout: $TIMEOUT" >&2
 echo "" >&2
 
 # Upload task
