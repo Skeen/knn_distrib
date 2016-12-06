@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SERVER_URL=http://localhost:3001
+SERVER_URL=http://llama09:3001
 
 REF_PATH=$1
 QUERY_PATH=$2
