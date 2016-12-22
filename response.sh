@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SERVER_URL=http://llama09:3001
+SERVER_URL=http://localhost:3001
 
 NAME=$1
 
@@ -22,7 +22,7 @@ done
 
 # Download the result
 while true; do
-    curl -qs $SERVER_URL/awaitComplete?name=$NAME
+    curl -qsL $SERVER_URL/awaitComplete?name=$NAME
     if [ $? -eq 0 ]; then
         exit 0
     fi
