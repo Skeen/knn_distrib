@@ -12,7 +12,7 @@ echo "" >&2
 
 # Print out progress information
 while true; do
-    PROGRESS=$(curl -qs $SERVER_URL/progress?name=$NAME)
+    PROGRESS=$(curl -qfs $SERVER_URL/progress?name=$NAME)
     echo -en "\r\e[0K Progress: $PROGRESS" >&2
     if [ "$PROGRESS" = "100%" ]; then
         break
@@ -22,7 +22,7 @@ done
 
 # Download the result
 while true; do
-    curl -qsL $SERVER_URL/awaitComplete?name=$NAME
+    curl -qfsL $SERVER_URL/awaitComplete?name=$NAME
     if [ $? -eq 0 ]; then
         exit 0
     fi
