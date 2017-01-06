@@ -35,7 +35,7 @@ echo "" >&2
 # Upload task
 echo "Uploading data for the task:" >&2
 
-NAME=$(curl -q \
+NAME=$(curl -qf \
   --progress-bar \
   -F "timeout=$TIMEOUT" \
   -F "split=$SPLIT" \
